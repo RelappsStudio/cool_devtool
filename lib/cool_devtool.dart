@@ -6,9 +6,7 @@ import 'package:cool_devtool/debug_tools/logcat_viewer_screen.dart';
 import 'package:cool_devtool/extensions/iterable_extensions.dart';
 import 'package:cool_devtool/inspector_tools/debug_options.dart';
 import 'package:cool_devtool/widgets/list_view_menu_item.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'local_variables.dart';
 
 class DevtoolsMenuScreen extends StatefulWidget {
@@ -85,7 +83,7 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
         InkWell(
           onTap: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => LogcatViewerScreen()));
+                MaterialPageRoute(builder: (context) => const LogcatViewerScreen()));
           },
           child: const SizedBox(
             height: 60,

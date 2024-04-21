@@ -1,5 +1,4 @@
 import 'package:cool_devtool/tools/logcat_live_view.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +10,7 @@ class LogcatViewerScreen extends StatefulWidget {
 }
 
 class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
-  StringBuffer _logBuffer = StringBuffer();
+  final StringBuffer _logBuffer = StringBuffer();
   int _groupValue = 0;
 
   @override
@@ -49,12 +48,12 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
       ),
       body: Column(
         children: [
-          Text("Logcat log:"),
+          const Text("Logcat log:"),
           logboxBuild(context),
           Column(
             children: [
               RadioListTile(
-                title: Text("logcat filter: *.*"),
+                title: const Text("logcat filter: *.*"),
                 value: 0,
                 groupValue: _groupValue,
                 onChanged: (value) async {
@@ -66,7 +65,7 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
                 },
               ),
               RadioListTile(
-                title: Text("logcat filter: flutter,LogcatMonPlugin,S:*"),
+                title: const Text("logcat filter: flutter,LogcatMonPlugin,S:*"),
                 value: 1,
                 groupValue: _groupValue,
                 onChanged: (value) async {
@@ -81,20 +80,20 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
             ],
           ),
           TextButton(
-            child: Text("call debugPrint on flutter"),
             onPressed: () async {
               debugPrint("called debugPrint from flutter!");
             },
             style: TextButton.styleFrom(
                 elevation: 2, backgroundColor: Colors.amber[100]),
+            child: const Text("call debugPrint on flutter"),
           ),
           TextButton(
-            child: Text("Clear"),
             onPressed: () async {
               clearLog();
             },
             style: TextButton.styleFrom(
                 elevation: 2, backgroundColor: Colors.amber[100]),
+            child: const Text("Clear"),
           ),
         ],
       ),
@@ -114,13 +113,13 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
           ),
           child: Scrollbar(
             thickness: 10,
-            radius: Radius.circular(20),
+            radius: const Radius.circular(20),
             child: SingleChildScrollView(
               reverse: true,
               scrollDirection: Axis.vertical,
               child: Text(
                 _logBuffer.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14.0,
                 ),

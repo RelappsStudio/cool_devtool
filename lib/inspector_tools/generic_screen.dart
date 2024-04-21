@@ -1,8 +1,6 @@
 import 'package:cool_devtool/extensions/iterable_extensions.dart';
 import 'package:cool_devtool/inspector_tools/debug_options.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class GenericDevtoolScreen extends StatefulWidget {
   final DebugOptions currentOption;
@@ -29,8 +27,6 @@ class _GenericDevtoolScreenState extends State<GenericDevtoolScreen> {
                 Switch(
                     value: widget.currentOption.object.debugValue,
                     onChanged: (value) {
-                      final thisMaterialApp =
-                          
                       setState(() {
                         widget.currentOption.reverseValue();
                       });

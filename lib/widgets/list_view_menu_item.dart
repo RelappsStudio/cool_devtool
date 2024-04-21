@@ -1,5 +1,4 @@
 import 'package:cool_devtool/inspector_tools/generic_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../inspector_tools/debug_options.dart';
