@@ -39,7 +39,7 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: InkWell(
               onTap: () {
-               // final type = widget.coreWidget;
+                // final type = widget.coreWidget;
                 setState(() {
                   // context.findAncestorWidgetOfExactType<this.runtimeType>();
                   // if (thisMaterialApp != null) {
@@ -97,7 +97,7 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
                   width: 20,
                 ),
                 Expanded(
-                  child: Text('Open logcat'),
+                  child: Text('Open logcat (WIP)'),
                 ),
                 Icon(Icons.arrow_right)
               ]),

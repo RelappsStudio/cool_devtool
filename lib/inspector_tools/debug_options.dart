@@ -146,7 +146,7 @@ extension DebugOptionsDetails on DebugOptions {
                 '*disables all opacity effects, can be used to check whether excessive use of opacity effects is affecting performance.');
       case DebugOptions.performanceOverlay:
         return Option(
-            title: 'Show performance overlay',
+            title: 'Show performance overlay  (WIP)',
             debugValue: performanceOverlayController,
             description:
                 '*enables displaying performance overlay over the application');

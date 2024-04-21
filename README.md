@@ -53,4 +53,4 @@ const like = 'sample';
 
 ## Additional information
 
-File issues on package's github paeg. Ideas too ;)
+File issues on package's github page. Ideas too ;)

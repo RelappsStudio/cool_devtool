@@ -1,7 +1,9 @@
 name: cool_devtool
-description: "A new Flutter package project."
+description: "Inspect your app on the go"
 version: 0.0.1
-homepage:
+homepage: https://github.com/RelappsStudio/cool_devtool
+repository: https://github.com/RelappsStudio/cool_devtool.git
+issue_tracker: https://github.com/RelappsStudio/cool_devtool/issues
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
