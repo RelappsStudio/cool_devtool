@@ -37,13 +37,7 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: InkWell(
               onTap: () {
-                // final type = widget.coreWidget;
-                setState(() {
-                  // context.findAncestorWidgetOfExactType<this.runtimeType>();
-                  // if (thisMaterialApp != null) {
-                  //   thisMaterialApp.createState();
-                  // }
-                });
+                WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
               },
               child: const Row(
                 children: [

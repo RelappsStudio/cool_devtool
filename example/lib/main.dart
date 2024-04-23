@@ -4,9 +4,8 @@ import 'package:cool_devtool/cool_devtool.dart';
 import 'package:cool_devtool/inspector_tools/debug_options.dart';
 import 'package:flutter/material.dart';
 
-bool performanceOverlayController = false;
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -21,8 +20,8 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: UniqueKey(),
       showPerformanceOverlay: DebugOptions.performanceOverlay.object.debugValue,
-      key: GlobalKey(debugLabel: 'thisMaterialApp'),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -31,6 +30,7 @@ class MyAppState extends State<MyApp> {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -68,14 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      performanceOverlayController =
-                          !performanceOverlayController;
-                    });
-                  },
-                  child: Text('dynamic overlay')),
               Text("oversized image example"),
               SizedBox(
                 height: 200,

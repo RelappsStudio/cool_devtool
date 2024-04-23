@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -7,7 +8,7 @@ enum DebugOptions {
   slowAnimations,
   showGuidelines,
   showBaselines,
-  highlightRepaints,
+  // highlightRepaints,
   showOversizedImages,
   paintPointers,
   paintLayerBorders,
@@ -28,14 +29,15 @@ class Option {
       {required this.title,
       required this.debugValue,
       required this.description});
+
 }
 
 extension ReverseDebugOption on DebugOptions {
   void reverseValue() {
     switch (this) {
-      case DebugOptions.highlightRepaints:
-        debugRepaintRainbowEnabled = !debugRepaintRainbowEnabled;
-        break;
+      // case DebugOptions.highlightRepaints:
+      //   debugRepaintRainbowEnabled = !debugRepaintRainbowEnabled;
+      //   break;
       case DebugOptions.showOversizedImages:
         debugInvertOversizedImages = !debugInvertOversizedImages;
         break;
@@ -56,6 +58,7 @@ extension ReverseDebugOption on DebugOptions {
         break;
       case DebugOptions.repaintRainbow:
         debugRepaintRainbowEnabled = !debugRepaintRainbowEnabled;
+        break;
       case DebugOptions.needsLayoutStacks:
         debugPrintMarkNeedsLayoutStacks = !debugPrintMarkNeedsLayoutStacks;
         break;
@@ -64,6 +67,7 @@ extension ReverseDebugOption on DebugOptions {
         break;
       case DebugOptions.performanceOverlay:
         performanceOverlayController = !performanceOverlayController;
+         WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
         break;
       case DebugOptions.disableOpacity:
         debugDisableOpacityLayers = !debugDisableOpacityLayers;
@@ -77,12 +81,12 @@ extension ReverseDebugOption on DebugOptions {
 extension DebugOptionsDetails on DebugOptions {
   Option get object {
     switch (this) {
-      case DebugOptions.highlightRepaints:
-        return Option(
-            title: 'Highlight repaints',
-            debugValue: debugRepaintRainbowEnabled,
-            description:
-                '* draws a border around all render boxes that changes color every time that box repaints');
+      // case DebugOptions.highlightRepaints:
+      //   return Option(
+      //       title: 'Highlight repaints',
+      //       debugValue: debugRepaintRainbowEnabled,
+      //       description:
+      //           '* draws a border around all render boxes that changes color every time that box repaints');
       case DebugOptions.showOversizedImages:
         return Option(
             title: 'Highlight oversized images',

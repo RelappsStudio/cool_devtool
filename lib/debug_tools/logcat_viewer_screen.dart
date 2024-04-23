@@ -58,7 +58,7 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
                 groupValue: _groupValue,
                 onChanged: (value) async {
                   setState(() {
-                    _groupValue = value ?? 0;
+                    _groupValue = value as int;
                     _logBuffer.clear();
                   });
                   await LogcatMonitor.startMonitor("*.*");
@@ -70,7 +70,7 @@ class _LogcatViewerScreenState extends State<LogcatViewerScreen> {
                 groupValue: _groupValue,
                 onChanged: (value) async {
                   setState(() {
-                    _groupValue = value ?? 0;
+                    _groupValue = value as int;
                     _logBuffer.clear();
                   });
                   await LogcatMonitor.startMonitor(
