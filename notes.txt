@@ -1,0 +1,19 @@
+enum DebugOptions {
+  slowAnimations,
+  showGuidelines,
+  showBaselines, //debug only
+  // highlightRepaints,
+  showOversizedImages, //debug only
+  paintPointers,
+  paintLayerBorders,
+  repaintRainbow,
+  needsLayoutStacks,
+  needsPaintStacks,
+  performanceOverlay,
+  disableOpacity,
+  disableClipLayers,
+  offscreenLayers,
+  rasterCacheImages,
+  materialGrid,
+  semanticsDebugger,
+}

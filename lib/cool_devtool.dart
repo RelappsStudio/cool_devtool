@@ -6,6 +6,7 @@ import 'package:cool_devtool/debug_tools/logcat_viewer_screen.dart';
 import 'package:cool_devtool/extensions/iterable_extensions.dart';
 import 'package:cool_devtool/inspector_tools/debug_options.dart';
 import 'package:cool_devtool/widgets/list_view_menu_item.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'local_variables.dart';
 
@@ -37,11 +38,12 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: InkWell(
               onTap: () {
-                WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+                WidgetsFlutterBinding.ensureInitialized()
+                    .reassembleApplication();
               },
               child: const Row(
                 children: [
-                  Text('Refresh'),
+                  Text('Hot reload'),
                   SizedBox(
                     width: 15,
                   ),
@@ -55,9 +57,20 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
       body: ListView(
         children: _buildLogcatTile() +
             DebugOptions.values
-                .map((e) => MenuItem(
+                .map((e) {
+                  if (kDebugMode) {
+                    return MenuItem(
                       option: e,
-                    ) as Widget)
+                    ) as Widget;
+                  } else {
+                    if (!e.object.isDebugOnly) {
+                      return MenuItem(
+                        option: e,
+                      ) as Widget;
+                    }
+                  }
+                  return const SizedBox();
+                })
                 .intersperse(_separator())
                 .toList(),
       ),
@@ -76,8 +89,8 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
       return [
         InkWell(
           onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const LogcatViewerScreen()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const LogcatViewerScreen()));
           },
           child: const SizedBox(
             height: 60,

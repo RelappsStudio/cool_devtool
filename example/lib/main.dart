@@ -20,8 +20,14 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: UniqueKey(),
-      showPerformanceOverlay: DebugOptions.performanceOverlay.object.debugValue,
+      checkerboardOffscreenLayers:
+          DebugOptions.offscreenLayers.object.optionValue,
+      checkerboardRasterCacheImages:
+          DebugOptions.rasterCacheImages.object.optionValue,
+      debugShowMaterialGrid: DebugOptions.materialGrid.object.optionValue,
+      showSemanticsDebugger: DebugOptions.semanticsDebugger.object.optionValue,
+      showPerformanceOverlay:
+          DebugOptions.performanceOverlay.object.optionValue,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -30,7 +36,6 @@ class MyAppState extends State<MyApp> {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-
 }
 
 class MyHomePage extends StatefulWidget {

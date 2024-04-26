@@ -21,19 +21,37 @@ To use base functionalities just set up navigation to devtools screen
 Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const DevtoolsMenuScreen()));
 ```
-To use performance overlay add this line to your MaterialApp
+
+To use MaterialApp tools add these lines to your MaterialApp constructor
+
+
 ```
 showPerformanceOverlay: DebugOptions.performanceOverlay.object.debugValue,
 ```
 
+```
+checkerboardOffscreenLayers: DebugOptions.offscreenLayers.object.optionValue,
+```
 
-REMEMER THAT DEBUG FEATURES CAN ONLY BE USED IN DEBUG MODE - RELEASE MODE FUNCTIONALITIES DIFFER
+```
+checkerboardRasterCacheImages:DebugOptions.rasterCacheImages.object.optionValue,
+```
+
+```
+debugShowMaterialGrid: DebugOptions.materialGrid.object.optionValue,
+```
+
+```
+showSemanticsDebugger: DebugOptions.semanticsDebugger.object.optionValue,
+```
+
+
+REMEMBER THAT DEBUG FEATURES CAN ONLY BE USED IN DEBUG MODE - RELEASE MODE FUNCTIONALITIES DIFFER
 
 
 ## Roadmap
 - architecture overhaul (current file structure is still a mess)
 - live logcat view (Android only)
-- more functions available for release app version
 - translations (?)
 - network call hijacker - monitor all your app's network calls in one place
 - more tools based on feedback

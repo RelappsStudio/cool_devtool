@@ -18,18 +18,23 @@ enum DebugOptions {
   performanceOverlay,
   disableOpacity,
   disableClipLayers,
+  offscreenLayers,
+  rasterCacheImages,
+  materialGrid,
+  semanticsDebugger,
 }
 
 class Option {
   final String title;
-  bool debugValue;
+  bool optionValue;
   final String description;
+  final bool isDebugOnly;
 
   Option(
       {required this.title,
-      required this.debugValue,
-      required this.description});
-
+      required this.optionValue,
+      required this.description,
+      this.isDebugOnly = false});
 }
 
 extension ReverseDebugOption on DebugOptions {
@@ -67,13 +72,30 @@ extension ReverseDebugOption on DebugOptions {
         break;
       case DebugOptions.performanceOverlay:
         performanceOverlayController = !performanceOverlayController;
-         WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+        WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
         break;
       case DebugOptions.disableOpacity:
         debugDisableOpacityLayers = !debugDisableOpacityLayers;
         break;
       case DebugOptions.disableClipLayers:
         debugDisableClipLayers = !debugDisableClipLayers;
+        break;
+      case DebugOptions.offscreenLayers:
+        offscreenLayersController = !offscreenLayersController;
+        WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+        break;
+      case DebugOptions.rasterCacheImages:
+        rasterCacheImagesController = !rasterCacheImagesController;
+        WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+        break;
+      case DebugOptions.materialGrid:
+        materialGridController = !materialGridController;
+        WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+        break;
+      case DebugOptions.semanticsDebugger:
+        semanticsDebuggerController = !semanticsDebuggerController;
+        WidgetsFlutterBinding.ensureInitialized().reassembleApplication();
+        break;
     }
   }
 }
@@ -90,75 +112,109 @@ extension DebugOptionsDetails on DebugOptions {
       case DebugOptions.showOversizedImages:
         return Option(
             title: 'Highlight oversized images',
-            debugValue: debugInvertOversizedImages,
+            optionValue: debugInvertOversizedImages,
+            isDebugOnly: true,
             description:
                 '*images that are larger than they should be will be upside down with inverted colors');
       case DebugOptions.showBaselines:
         return Option(
             title: 'Show baselines',
-            debugValue: debugPaintBaselinesEnabled,
+            optionValue: debugPaintBaselinesEnabled,
+            isDebugOnly: true,
             description:
                 '*makes all baselines visible. Baselines are horizontal lines used to position text');
       case DebugOptions.showGuidelines:
         return Option(
           title: "Show guidelines",
-          debugValue: debugPaintSizeEnabled,
+          optionValue: debugPaintSizeEnabled,
+          isDebugOnly: true,
           description:
               '*draws guidelines over your app that display render boxes, alignments, paddings, scroll views, clippings and spacers',
         );
       case DebugOptions.slowAnimations:
         return Option(
             title: 'Slow animations',
-            debugValue: timeDilation == 5.0,
+            optionValue: timeDilation == 5.0,
             description: '*slows down animations 5 times');
       case DebugOptions.paintPointers:
         return Option(
             title: 'Paint pointers',
-            debugValue: debugPaintPointersEnabled,
+            optionValue: debugPaintPointersEnabled,
+            isDebugOnly: true,
             description:
                 '*highlights any objects that you tap in teal. This can help you determine if an object fails to hit test. This might happen if the object falls outside the bounds of its parent and thus not considered for hit testing in the first place.');
       case DebugOptions.paintLayerBorders:
         return Option(
             title: 'Paint layer borders',
-            debugValue: debugPaintLayerBordersEnabled,
+            optionValue: debugPaintLayerBordersEnabled,
+            isDebugOnly: true,
             description:
                 '*find the boundaries of each layer. This flag results in outlining each layer\'s bounds in orange.');
       case DebugOptions.repaintRainbow:
         return Option(
             title: 'Repaint rainbow',
-            debugValue: debugRepaintRainbowEnabled,
+            optionValue: debugRepaintRainbowEnabled,
+            isDebugOnly: true,
             description:
                 '*display a repainted layer. Whenever a layer repaints, it overlays with a rotating set of colors.');
       case DebugOptions.needsLayoutStacks:
         return Option(
             title: 'Inspect layouts (logcat)',
-            debugValue: debugPrintMarkNeedsLayoutStacks,
+            optionValue: debugPrintMarkNeedsLayoutStacks,
+            isDebugOnly: true,
             description:
                 '*To determine if your app creates more layouts than expected the framework outputs stack traces to the console/logcat to explain why your app marks each render object to be laid out.');
       case DebugOptions.needsPaintStacks:
         return Option(
             title: 'Inspect paints (logcat)',
-            debugValue: debugPrintMarkNeedsPaintStacks,
+            optionValue: debugPrintMarkNeedsPaintStacks,
+            isDebugOnly: true,
             description:
                 '*determine if your app paints more layouts than expected, visible in output/logcat');
       case DebugOptions.disableOpacity:
         return Option(
             title: 'Disable opacity layers',
-            debugValue: debugDisableOpacityLayers,
+            optionValue: debugDisableOpacityLayers,
+            isDebugOnly: true,
             description:
                 '*disables all opacity effects, can be used to check whether excessive use of opacity effects is affecting performance.');
       case DebugOptions.performanceOverlay:
         return Option(
-            title: 'Show performance overlay  (WIP)',
-            debugValue: performanceOverlayController,
+            title: 'Show performance overlay',
+            optionValue: performanceOverlayController,
             description:
                 '*enables displaying performance overlay over the application');
       case DebugOptions.disableClipLayers:
         return Option(
             title: 'Disable clip layers',
-            debugValue: debugDisableClipLayers,
+            optionValue: debugDisableClipLayers,
+            isDebugOnly: true,
             description:
                 '*debug whether objects being clipped are painting excessively in clipped areas. Can also be used to check whether excessive use of clipping is affecting performance.');
+      case DebugOptions.offscreenLayers:
+        return Option(
+            title: 'Show offscreen layers',
+            optionValue: offscreenLayersController,
+            description:
+                '*Turns on checkerboarding of layers rendered to offscreen bitmaps.');
+      case DebugOptions.rasterCacheImages:
+        return Option(
+            title: 'Show cached images',
+            optionValue: rasterCacheImagesController,
+            description: '*Turns on checkerboarding of raster cache images.');
+      case DebugOptions.materialGrid:
+        return Option(
+            title: 'Show material grid',
+            optionValue: materialGridController,
+            isDebugOnly: true,
+            description:
+                'Turns on a GridPaper overlay that paints a baseline grid');
+      case DebugOptions.semanticsDebugger:
+        return Option(
+            title: 'Semantic debugger',
+            optionValue: semanticsDebuggerController,
+            description:
+                '*Turns on an overlay that shows the accessibility information reported by the framework.');
     }
   }
 }

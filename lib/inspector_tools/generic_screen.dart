@@ -11,7 +11,6 @@ class GenericDevtoolScreen extends StatefulWidget {
 }
 
 class _GenericDevtoolScreenState extends State<GenericDevtoolScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,7 @@ class _GenericDevtoolScreenState extends State<GenericDevtoolScreen> {
               children: <Widget>[
                 const Text('Off'),
                 Switch(
-                    value: widget.currentOption.object.debugValue,
+                    value: widget.currentOption.object.optionValue,
                     onChanged: (value) async {
                       setState(() {
                         widget.currentOption.reverseValue();
@@ -49,5 +48,4 @@ class _GenericDevtoolScreenState extends State<GenericDevtoolScreen> {
       ),
     );
   }
-  
 }

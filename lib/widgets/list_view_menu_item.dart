@@ -26,7 +26,7 @@ class _MenuItemState extends State<MenuItem> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(children: [
             Switch(
-                value: widget.option.object.debugValue,
+                value: widget.option.object.optionValue,
                 onChanged: (value) {
                   setState(() {
                     widget.option.reverseValue();
