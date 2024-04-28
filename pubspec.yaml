@@ -1,6 +1,6 @@
 name: cool_devtool
-description: "Inspect your app on the go"
-version: 0.0.3
+description: "Flutter profiling, debugging & performance tools. All grouped up, ready to use without running app through IDE."
+version: 0.0.4
 homepage: https://github.com/RelappsStudio/cool_devtool
 repository: https://github.com/RelappsStudio/cool_devtool.git
 issue_tracker: https://github.com/RelappsStudio/cool_devtool/issues

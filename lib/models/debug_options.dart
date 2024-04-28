@@ -6,22 +6,21 @@ import '../local_variables.dart';
 
 enum DebugOptions {
   slowAnimations,
+  performanceOverlay,
   showGuidelines,
   showBaselines,
-  // highlightRepaints,
   showOversizedImages,
   paintPointers,
   paintLayerBorders,
   repaintRainbow,
-  needsLayoutStacks,
-  needsPaintStacks,
-  performanceOverlay,
   disableOpacity,
   disableClipLayers,
   offscreenLayers,
   rasterCacheImages,
   materialGrid,
   semanticsDebugger,
+  needsLayoutStacks,
+  needsPaintStacks
 }
 
 class Option {
@@ -40,9 +39,6 @@ class Option {
 extension ReverseDebugOption on DebugOptions {
   void reverseValue() {
     switch (this) {
-      // case DebugOptions.highlightRepaints:
-      //   debugRepaintRainbowEnabled = !debugRepaintRainbowEnabled;
-      //   break;
       case DebugOptions.showOversizedImages:
         debugInvertOversizedImages = !debugInvertOversizedImages;
         break;
@@ -103,12 +99,6 @@ extension ReverseDebugOption on DebugOptions {
 extension DebugOptionsDetails on DebugOptions {
   Option get object {
     switch (this) {
-      // case DebugOptions.highlightRepaints:
-      //   return Option(
-      //       title: 'Highlight repaints',
-      //       debugValue: debugRepaintRainbowEnabled,
-      //       description:
-      //           '* draws a border around all render boxes that changes color every time that box repaints');
       case DebugOptions.showOversizedImages:
         return Option(
             title: 'Highlight oversized images',

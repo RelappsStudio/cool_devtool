@@ -2,19 +2,15 @@ library cool_devtool;
 
 import 'dart:io';
 
-import 'package:cool_devtool/debug_tools/logcat_viewer_screen.dart';
-import 'package:cool_devtool/extensions/iterable_extensions.dart';
-import 'package:cool_devtool/inspector_tools/debug_options.dart';
+import 'package:cool_devtool/widgets/logcat_viewer_screen.dart';
+import 'package:cool_devtool/models/debug_options.dart';
 import 'package:cool_devtool/widgets/list_view_menu_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'local_variables.dart';
 
 class DevtoolsMenuScreen extends StatefulWidget {
-  final bool? performanceOverlayController;
   const DevtoolsMenuScreen({
     super.key,
-    this.performanceOverlayController,
   });
 
   @override
@@ -22,12 +18,6 @@ class DevtoolsMenuScreen extends StatefulWidget {
 }
 
 class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
-  @override
-  void initState() {
-    performanceOverlayController = widget.performanceOverlayController ?? false;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,23 +46,20 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
       ),
       body: ListView(
         children: _buildLogcatTile() +
-            DebugOptions.values
-                .map((e) {
-                  if (kDebugMode) {
-                    return MenuItem(
-                      option: e,
-                    ) as Widget;
-                  } else {
-                    if (!e.object.isDebugOnly) {
-                      return MenuItem(
-                        option: e,
-                      ) as Widget;
-                    }
-                  }
-                  return const SizedBox();
-                })
-                .intersperse(_separator())
-                .toList(),
+            DebugOptions.values.map((e) {
+              if (kDebugMode) {
+                return MenuItem(
+                  option: e,
+                ) as Widget;
+              } else {
+                if (!e.object.isDebugOnly) {
+                  return MenuItem(
+                    option: e,
+                  ) as Widget;
+                }
+              }
+              return const SizedBox();
+            }).toList(),
       ),
     );
   }
@@ -87,6 +74,7 @@ class _DevtoolsMenuScreenState extends State<DevtoolsMenuScreen> {
   List<Widget> _buildLogcatTile() {
     if (Platform.isAndroid) {
       return [
+        _separator(),
         InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(

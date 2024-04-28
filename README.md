@@ -1,16 +1,17 @@
 
-This is devtools package. Use flutter devtools on the go. Just install debug app version and enjoy all the helpful tools to inspect your app
+This is devtools package. Use flutter devtools on the go. Just install debug app version and enjoy all the helpful tools to inspect your app.
 
 ## Features
 
-All you could do with IDE of your choice- always with you:
-- Slowing animations
-- Highlight repaints
-- Inspect oversized images
-- Show guidelines
-- Disable opacity layers
-- Paint layer borders
-- and more...
+All you could do with IDE of your choice- always with you. In debug mode all features are available.
+
+
+|**Debug features**|**Profile/release features**|
+|:---:|:---:|
+|  <br/> Highlight oversized images <br/> Show baselines <br/> Show guidelines <br/> Paint pointers <br/> Paint layer borders <br/> Repaint rainbow <br/> Inspect layouts (logcat) <br/> Inspect paints (logcat) <br/> Disable opacity layers <br/> Disable clip layers <br/> Show material grid <br/> | <br/> Slow animations <br/> <br/>Show performance overlay <br/><br/> Show offscreen layers <br/><br/> Show cached images <br/><br/> Semantic debugger |
+
+
+
 
 ![alt text](image.png)
 
@@ -26,7 +27,7 @@ To use MaterialApp tools add these lines to your MaterialApp constructor
 
 
 ```
-showPerformanceOverlay: DebugOptions.performanceOverlay.object.debugValue,
+showPerformanceOverlay: DebugOptions.performanceOverlay.object.optionValue,
 ```
 
 ```
@@ -50,8 +51,9 @@ REMEMBER THAT DEBUG FEATURES CAN ONLY BE USED IN DEBUG MODE - RELEASE MODE FUNCT
 
 
 ## Roadmap
-- architecture overhaul (current file structure is still a mess)
 - live logcat view (Android only)
+- tests
+- github actions automations
 - translations (?)
 - network call hijacker - monitor all your app's network calls in one place
 - more tools based on feedback

@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class LogcatMonitor {
-  static const MethodChannel _channel =
-      MethodChannel("cool_devtool/methods");
+  static const MethodChannel _channel = MethodChannel("cool_devtool/methods");
   static const EventChannel _stream = EventChannel("cool_devtool/events");
   static late StreamSubscription _streamSubscription;
 

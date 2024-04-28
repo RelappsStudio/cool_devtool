@@ -1,5 +1,5 @@
 import 'package:cool_devtool/extensions/iterable_extensions.dart';
-import 'package:cool_devtool/inspector_tools/debug_options.dart';
+import 'package:cool_devtool/models/debug_options.dart';
 import 'package:flutter/material.dart';
 
 class GenericDevtoolScreen extends StatefulWidget {

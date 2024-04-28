@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:cool_devtool/cool_devtool.dart';
-import 'package:cool_devtool/inspector_tools/debug_options.dart';
+import 'package:cool_devtool/models/debug_options.dart';
 import 'package:flutter/material.dart';
 
 void main() {
